@@ -20,4 +20,4 @@ INSERT INTO users (name, surname, birthday) VALUES
 ('Алиса','Зайцева','2000-04-03'),
 ('Ольга','Застрожнова','1983-05-07');
 
-SELECT AVG(FLOOR(((TO_DAYS(NOW()) - TO_DAYS(birthday)) / 365.25))) FROM users;
+SELECT AVG(FLOOR(((TO_DAYS(NOW()) - TO_DAYS(birthday)) / 365.25))) as avg_age FROM users;
