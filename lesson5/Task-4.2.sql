@@ -24,6 +24,8 @@ INSERT INTO users (name, surname, birthday) VALUES
 ('Алиса','Зайцева','2000-04-03'),
 ('Ольга','Застрожнова','1983-05-07');
 
+SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
 SELECT user, birthday,
 DATE_FORMAT(birthday, '%2020-%m-%d') AS birthday_2020,
 DATE_FORMAT(DATE_FORMAT(birthday, '%2020-%m-%d'), '%W') AS day_2020,
