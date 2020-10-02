@@ -24,7 +24,8 @@ INSERT INTO users (name, surname, birthday) VALUES
 ('Алиса','Зайцева','2000-04-03'),
 ('Ольга','Застрожнова','1983-05-07');
 
-SELECT id, user,
+SELECT user, birthday,
 DATE_FORMAT(birthday, '%2020-%m-%d') AS birthday_2020,
-DATE_FORMAT(DATE_FORMAT(birthday, '%2020-%m-%d'), '%W') AS day_2020
+DATE_FORMAT(DATE_FORMAT(birthday, '%2020-%m-%d'), '%W') AS day_2020,
+COUNT(*) as res
 FROM users GROUP BY day_2020;
