@@ -1,10 +1,10 @@
 -- Определить кто больше поставил лайков (всего) - мужчины или женщины?
 
-SELECT id,
-	name,
-	surname,
+SELECT 
     gender,
-	COUNT(gender)
+	COUNT(gender) AS total_likes
 FROM users u
 WHERE id IN (SELECT id from likes) 
-	GROUP BY gender;
+	GROUP BY gender
+    LIMIT 1; -- выведет только ответ
+    
