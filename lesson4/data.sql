@@ -80,7 +80,7 @@ insert into communities (id, name) values (50, 'Chevrolet');
 #
 
 
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('1', '1', 'approved', '2017-06-16 17:04:46', '1998-07-03 04:03:47');
+INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('1', '5', 'approved', '2017-06-16 17:04:46', '1998-07-03 04:03:47');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('2', '2', 'unfriended', '1981-10-02 18:05:50', '1997-04-21 22:40:05');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('3', '3', 'unfriended', '2016-06-19 08:30:46', '1992-03-08 13:01:42');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('4', '4', 'unfriended', '2011-09-27 21:32:13', '2000-08-14 17:35:08');
@@ -93,12 +93,12 @@ INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, 
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('11', '11', 'requested', '2019-01-30 11:02:53', '1992-03-12 21:47:01');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('12', '12', 'unfriended', '1991-09-09 23:06:07', '1998-05-08 16:01:29');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('13', '13', 'unfriended', '1986-02-01 05:50:03', '1977-06-18 05:25:01');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('14', '14', 'approved', '1990-09-14 23:46:52', '1974-11-02 22:31:12');
+INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('14', '5', 'approved', '1990-09-14 23:46:52', '1974-11-02 22:31:12');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('15', '15', 'unfriended', '1976-11-23 20:47:44', '2013-01-22 01:17:10');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('16', '16', 'unfriended', '2001-11-24 14:51:07', '2020-07-15 09:37:33');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('17', '17', 'unfriended', '1990-11-24 10:48:31', '1997-06-11 22:33:07');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('18', '18', 'unfriended', '1984-01-11 12:19:47', '2005-05-02 23:33:24');
-INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('19', '19', 'approved', '2014-07-08 23:29:01', '2008-06-24 08:19:19');
+INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('19', '5', 'approved', '2014-07-08 23:29:01', '2008-06-24 08:19:19');
 INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `confirmed_at`) VALUES ('20', '20', 'declined', '1995-05-20 16:27:37', '2005-01-28 04:33:43');
 
 
