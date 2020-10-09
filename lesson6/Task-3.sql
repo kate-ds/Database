@@ -72,8 +72,22 @@ CREATE TABLE likes_to_comment(
 1 - посчитать возраст пользователей, отсортировать их, взять 10
 2 - Посчитать количество лайков для пользователей с этими id
 3 - Посчитать сумму
-
 */
+
+- выберем id лайка и id юзера, кому поставили, считаем лайки
+SELECT id,
+COUNT(*),
+(SELECT user_id FROM posts WHERE posts.id = lp.to_post_id) to_usr_id 
+FROM likes_to_post as lp 
+-- здесь уже добавляю ограничение на пользователей по возрасту
+WHERE to_usr_id IN (SELECT id, 
+	name, 
+	surname, 
+    birthday, 
+    TIMESTAMPDIFF(year, birthday, NOW()) age
+FROM users u ORDER BY age LIMIT 10) people
+GROUP BY to_usr_id ORDER BY COUNT(*) DESC;
+
 
 -- посчитать возраст пользователей, отсортировать их, взять 10
 
@@ -88,13 +102,11 @@ FROM users u ORDER BY age LIMIT 10;
 
 -- вывести лайки для пользователя с id (делать вложенный подзапрос для ид автора к пост айди, фото и тд)
 
--- выберем id лайка и id юзера, кому поставили
-SELECT id,
-(SELECT user_id FROM posts WHERE id IN (SELECT to_post_id FROM likes_to_post)) to_usr_id 
-FROM likes_to_post GROUP BY to_usr_id;
 
--- выберем юзера этого поста
-SELECT user_id FROM posts WHERE id IN (SELECT to_post_id FROM likes_to_post); 
+-- идент юзера из лайков
+select user_id from posts WHERE id IN (SELECT to_post_id FROM likes_to_post);
+
+
 -- найдем все лайки для для этого юзера
 
 SELECT * FROM likes_to_post WHERE to_usr_id IN (юзеры из лайков) FROM likes;
