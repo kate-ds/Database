@@ -21,27 +21,49 @@ CREATE TABLE IF NOT EXISTS users(
     pass CHAR(50)
 );
 
-DROP TABLE IF EXISTS likes;
-CREATE TABLE likes(
+DROP TABLE IF EXISTS likes_to_post;
+CREATE TABLE likes_to_post(
 	id SERIAL PRIMARY KEY,
 	from_user_id BIGINT UNSIGNED NOT NULL,
     to_post_id BIGINT UNSIGNED NOT NULL,
-	to_photo_id BIGINT UNSIGNED NOT NULL,
-	to_user_id BIGINT UNSIGNED NOT NULL,
-	to_comment_id BIGINT UNSIGNED NOT NULL,
-    -- created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-	-- deleted_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY(from_user_id) REFERENCES users (id),
     FOREIGN KEY(to_post_id) REFERENCES posts (id),
-    FOREIGN KEY(to_photo_id) REFERENCES photos (id),
-    FOREIGN KEY(to_user_id) REFERENCES users (id),
-    FOREIGN KEY(to_comment_id) REFERENCES comments (id),
-    INDEX like_post_idx (from_user_id, to_post_id),
-    INDEX like_photo_idx (from_user_id, to_photo_id),
-    INDEX like_user_idx (from_user_id, to_user_id),
-    INDEX like_comment_idx (from_user_id, to_comment_id)
+    INDEX like_post_idx (from_user_id, to_post_id)
 );
 
+INSERT INTO `likes_to_post` (`id`, `from_user_id`, `to_post_id`) VALUES 
+	('1', '1', '68'),
+	('2', '5', '68'), 
+	('3', '2', '23'),
+	('4', '9', '48'),
+	('5', '5', '10'),
+	('6', '6', '99'),
+	('7', '7', '10'),
+	('8', '8', '73');
+	/*('9', '9', '9', '9', '9', '9'),
+	('10', '10', '10', '10', '10', '10'),
+	('11', '11', '11', '11', '11', '11'),
+	('12', '12', '12', '12', '12', '12'),
+	('13', '13', '13', '13', '13', '13'),
+	('14', '14', '14', '14', '14', '14'); 
+    */
+
+DROP TABLE IF EXISTS likes_to_photo;
+CREATE TABLE likes_to_photo(
+	id SERIAL PRIMARY KEY,
+	from_user_id BIGINT UNSIGNED NOT NULL,
+	to_photo_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY(to_photo_id) REFERENCES photos (id),
+    INDEX like_photo_idx (from_user_id, to_photo_id)
+);
+
+DROP TABLE IF EXISTS likes_to_comment;
+CREATE TABLE likes_to_comment(
+	id SERIAL PRIMARY KEY,
+	from_user_id BIGINT UNSIGNED NOT NULL,
+	to_comment_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY(to_comment_id) REFERENCES comments (id),
+    INDEX like_comment_idx (from_user_id, to_comment_id)
+);
 
 /*
 Подсчитать общее количество лайков, которые получили 10 самых молодых пользователей.
@@ -60,9 +82,20 @@ SELECT id,
 	surname, 
     birthday, 
     TIMESTAMPDIFF(year, birthday, NOW()) age
-FROM users u 
-ORDER BY age LIMIT 10;
+FROM users u ORDER BY age LIMIT 10;
+-- WHERE id in ()
+
 
 -- вывести лайки для пользователя с id (делать вложенный подзапрос для ид автора к пост айди, фото и тд)
-    
 
+-- выберем id лайка и id юзера, кому поставили
+SELECT id,
+(SELECT user_id FROM posts WHERE id IN (SELECT to_post_id FROM likes_to_post)) to_usr_id 
+FROM likes_to_post GROUP BY to_usr_id;
+
+-- выберем юзера этого поста
+SELECT user_id FROM posts WHERE id IN (SELECT to_post_id FROM likes_to_post); 
+-- найдем все лайки для для этого юзера
+
+SELECT * FROM likes_to_post WHERE to_usr_id IN (юзеры из лайков) FROM likes;
+ 
