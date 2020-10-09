@@ -39,13 +39,6 @@ INSERT INTO `likes_to_post` (`id`, `from_user_id`, `to_post_id`) VALUES
 	('6', '6', '99'),
 	('7', '7', '10'),
 	('8', '8', '73');
-	/*('9', '9', '9', '9', '9', '9'),
-	('10', '10', '10', '10', '10', '10'),
-	('11', '11', '11', '11', '11', '11'),
-	('12', '12', '12', '12', '12', '12'),
-	('13', '13', '13', '13', '13', '13'),
-	('14', '14', '14', '14', '14', '14'); 
-    */
 
 DROP TABLE IF EXISTS likes_to_photo;
 CREATE TABLE likes_to_photo(
@@ -74,19 +67,16 @@ CREATE TABLE likes_to_comment(
 3 - Посчитать сумму
 */
 
-- выберем id лайка и id юзера, кому поставили, считаем лайки
-SELECT id,
-COUNT(*),
-(SELECT user_id FROM posts WHERE posts.id = lp.to_post_id) to_usr_id 
-FROM likes_to_post as lp 
--- здесь уже добавляю ограничение на пользователей по возрасту
-WHERE to_usr_id IN (SELECT id, 
-	name, 
-	surname, 
-    birthday, 
-    TIMESTAMPDIFF(year, birthday, NOW()) age
-FROM users u ORDER BY age LIMIT 10) people
-GROUP BY to_usr_id ORDER BY COUNT(*) DESC;
+
+SELECT 
+	COUNT(*)
+FROM likes_to_post
+WHERE to_post_id IN 
+	(SELECT posts.id FROM posts 
+		WHERE user_id IN 
+        (SELECT * FROM 
+			(SELECT id FROM users ORDER BY TIMESTAMPDIFF(year, birthday, NOW()) LIMIT 10) 
+		age_sort));
 
 
 -- посчитать возраст пользователей, отсортировать их, взять 10
