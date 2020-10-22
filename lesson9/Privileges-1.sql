@@ -12,5 +12,6 @@ GRANT SELECT ON shop.* TO 'shop_read'@'localhost';
 CREATE USER shop IDENTIFIED BY 'pass12345';
 GRANT ALL ON shop.* TO shop;
 FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'shop_read'@'localhost';
 SELECT * FROM mysql.user;
 
