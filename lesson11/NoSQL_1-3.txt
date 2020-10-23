@@ -39,4 +39,41 @@ get kat
 
 3 Организуйте хранение категорий и товарных позиций учебной базы данных shop в СУБД MongoDB.
 
+use shop
+db.createCollection({
+	catalogs: 
+	{
+	id: 1,
+	name: 'Процессоры'
+	},
+	{
+	id: 2,
+	name: 'Материнские платы'
+	},
+	{
+	id: 3,
+	name: 'Материнские платы'
+	}
+}, {
+	products: 
+	{
+	id: 1,
+	name: 'Intel Core i3-8100' ,
+	description: 'Процессор для настольных персональных компьютеров, основанных на платформе Intel.',
+	price: 6708.00,
+	catalog_id: 1
+	}, {
+	id: 2,
+	name: ,
+	description: 'Процессор для настольных персональных компьютеров, основанных на платформе Intel.',
+	price: 7890.00,
+	catalog_id: 1
+	}, {
+	id: 3,
+	name: 'Gigabyte H310M S2H',
+	description: 'Материнская плата Gigabyte H310M S2H, H310, Socket 1151-V2, DDR4, mATX',
+	price: 4790.00,
+	catalog_id: 2	
+	}
+}})
 
