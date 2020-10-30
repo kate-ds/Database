@@ -64,3 +64,24 @@ UPDATE users
 
 INSERT INTO professionals(id, profession, description) VALUES (50, 'Садовник', 'Все виды садово-огородных работ');
 SELECT COUNT(name) FROM tags WHERE name = 'Садовник';
+
+-- Триггер на автозаполнение таблицы professionals
+DROP TRIGGER IF EXISTS add_in_tbl_professional;
+DELIMITER //
+CREATE TRIGGER add_in_tbl_professional AFTER UPDATE ON users
+FOR EACH ROW
+BEGIN
+	IF NEW.is_profi = 1
+		THEN
+			INSERT INTO professionals (id, profession)
+				SELECT id, profession 
+				FROM users 
+				WHERE NEW.is_profi = 1;
+	END IF;
+END //
+
+UPDATE users 
+	SET is_profi = 1 
+    WHERE id = 20;
+
+SELECT * FROM professionals WHERE id = 20;
