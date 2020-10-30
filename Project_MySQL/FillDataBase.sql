@@ -183,7 +183,7 @@ INSERT INTO tags_to_invites (invite_id, tag_id) VALUES
 (21 , 6), (22 , 16), (25 , 18), (25 , 9), (25 , 11),
 (31 , 5), (32 , 26), (32 , 25), (33 , 9), (33 , 11),
 (26 , 6), (26 , 16), (27 , 18), (28 , 9), (29 , 11);
-INSERT INTO tags_to_invites (invite_id, tag_id) VALUES  (51, 11)
+INSERT INTO tags_to_invites (invite_id, tag_id) VALUES  (51, 11);
 
 
 /*
